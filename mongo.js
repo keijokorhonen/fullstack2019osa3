@@ -18,8 +18,8 @@ const url =
 mongoose.connect(url, { useNewUrlParser: true })
 
 const personSchema = new mongoose.Schema({
-  name: String,
-  number: String
+    name: String,
+    number: String
 })
 
 const Person = mongoose.model('Person', personSchema)
@@ -28,12 +28,12 @@ if (process.argv.length === 5) {
     const person = new Person({
         name: process.argv[3],
         number: process.argv[4]
-      })
-      
-      person.save().then(response => {
-        console.log(`added ${person.name} number ${person.number} to phonebook`);
-        mongoose.connection.close();
-      })
+    })
+
+    person.save().then(response => {
+        console.log(`added ${person.name} number ${person.number} to phonebook`)
+        mongoose.connection.close()
+    })
 } else {
     Person.find({}).then(result => {
         result.forEach(person => {
